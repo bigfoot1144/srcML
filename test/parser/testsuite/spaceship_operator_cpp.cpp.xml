@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="3-way_comparison_operator/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<decl_stmt><decl><type><name>auto</name></type> <name>res</name> <init>= <expr><name>foo</name> <operator>&lt;=&gt;</operator> <name>bar</name></expr></init></decl>;</decl_stmt>
+</unit>
+
+</unit>
