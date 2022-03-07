@@ -113,4 +113,30 @@
 <attribute>[[<expr><name>noreturn</name></expr>]]</attribute>
 </unit>
 
+<!--using attributes example-->
+<!--test 1-->
+<unit language="C++">
+<function_decl><attribute>[[ <using>using <name>gnu</name> <newlistname>:<expr><name>const</name></expr><operator>,</operator><expr><name>always_inline</name></expr><operator>,</operator><expr><name>hot</name></expr></newlistname></using>]]</attribute>
+<name>int</name> <name>f</name><argument_list>()</argument_list>;</function_decl>
+</unit>
+
+<!--new attribute examples-->
+<!--test 2-->
+<unit language="C++">
+<function_decl><attribute>[[<expr><name>fallthrough</name></expr>]]</attribute>
+<type><name>int</name></type> <name>f</name><attribute>[[<expr><name><name>gnu</name><operator>::</operator><name>always_inline</name></name></expr>]]</attribute><parameter_list>()</parameter_list>;</function_decl>
+</unit>
+
+<!--test 3-->
+<unit language="C++">
+<function_decl><attribute>[[<expr><name>maybe_unused</name></expr>]]</attribute>
+<type><name>int</name></type> <name>f</name><attribute>[[<expr><name><name>gnu</name><operator>::</operator><name>always_inline</name></name></expr>]]</attribute><parameter_list>()</parameter_list>;</function_decl> 
+</unit>
+
+<!--test 4-->
+<unit language="C++">
+<function_decl><attribute>[[<expr><name>nodiscard</name></expr>]]</attribute>
+<type><name>int</name></type> <name>f</name><attribute>[[<expr><name><name>gnu</name><operator>::</operator><name>always_inline</name></name></expr>]]</attribute><parameter_list>()</parameter_list>;</function_decl>
+</unit>
+
 </unit>
