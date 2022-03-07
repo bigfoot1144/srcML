@@ -127,5 +127,34 @@ raw UTF-16" string.)*"</literal></expr>;</expr_stmt>
 <expr_stmt><expr><literal type="number">0B11111111</literal></expr>;</expr_stmt>
 </unit>
 
+<!--test 1-->
+<unit language="C++">
+<decl_stmt><decl><type><name>char</name><modifier>*</modifier></type> <name>str</name> <init>= <expr><literal type="string">u8"teststring"</literal></expr></init></decl>;</decl_stmt>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<decl_stmt><decl><type><name>char</name></type> <name>exampleChar</name> <init>= <expr><literal type="char">'C'</literal></expr></init></decl>;</decl_stmt>
+</unit>
+
+<!--test 3-->
+<unit language="C++">
+<decl_stmt><decl><type><name>char</name></type> <name>exampleChar</name> <init>= <expr><literal type="char">u8'C'</literal></expr></init></decl>;</decl_stmt>
+</unit>
+
+<!--test 4-->
+<unit language="C++">
+<decl_stmt><decl><type><name>char</name></type> <name>exampleChar</name> <init>= <expr><literal type="char">u'C'</literal></expr></init></decl>;</decl_stmt>
+</unit>
+
+<!--test 5-->
+<unit language="C++">
+<decl_stmt><decl><type><name>char</name></type> <name>exampleChar</name> <init>= <expr><literal type="char">U'C'</literal></expr></init></decl>;</decl_stmt>
+</unit>
+
+<!--test 6-->
+<unit language="C++">
+<decl_stmt><decl><type><name>char</name></type> <name>exampleChar</name> <init>= <expr><literal type="char">L'C'</literal></expr></init></decl>;</decl_stmt>
+</unit>
 
 </unit>
