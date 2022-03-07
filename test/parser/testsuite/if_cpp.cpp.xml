@@ -40,4 +40,11 @@
 <empty_stmt>;</empty_stmt></block_content></block></if></if_stmt>
 </unit>
 
+<unit language="C++">
+<if_stmt><if>if<condition>(<decl_stmt><decl><type><name>int</name></type> <name>foo</name> <init>= <expr><literal type="number">0</literal></expr></init></decl>;</decl_stmt>)</condition>
+<block>{<block_content>
+    <expr_stmt><expr><name>foo</name> <operator>=</operator> <literal type="number">1</literal></expr>;</expr_stmt>
+</block_content>}</block></if></if_stmt>
+</unit>
+
 </unit>
