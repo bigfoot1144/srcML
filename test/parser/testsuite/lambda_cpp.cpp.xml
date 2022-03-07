@@ -101,4 +101,8 @@
 <expr_stmt><expr><call><lambda><capture>[]</capture><parameter_list>(<parameter><decl><type><name>thingy</name><modifier>*</modifier></type></decl></parameter>)</parameter_list> -&gt;<type><specifier>const</specifier> <name>int</name></type> <block>{<block_content> </block_content>}</block></lambda><argument_list>(<argument><expr><name>x</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
 </unit>
 
+<unit language="C++">
+<expr_stmt><expr><lambda><capture>[<argument><modifier>=</modifier></argument>, <argument><modifier>*</modifier><name>this</name></argument>]</capture><block>{<block_content/>}</block></lambda></expr>;</expr_stmt>
+</unit>
+
 </unit>
