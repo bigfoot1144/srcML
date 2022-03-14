@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="nestedNamespaces/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<namespace>namespace <name><name>parentNamespace</name><operator>::</operator><name>childNamespace</name></name>
+<block>{
+    <decl_stmt><decl><type><name>int</name></type> <name>bar</name> <init>= <expr><literal type="number">0</literal></expr></init></decl>;</decl_stmt>
+}</block></namespace>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<namespace>namespace <name><name>parentNamespace</name><operator>::</operator><name>childNamespace</name><operator>::</operator><name>childChildNamespace</name></name> 
+<block>{ 
+    <decl_stmt><decl><type><name>int</name></type> <name>bar</name> <init>= <expr><literal type="number">0</literal></expr></init></decl>;</decl_stmt> 
+}</block></namespace>
+</unit>
+
+</unit>
