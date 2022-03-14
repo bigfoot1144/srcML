@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="constraints_and_concepts/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<concept>concept <name>testConcept</name> <init>=<expr><name>requires</name><argument_list>(<argument>T a</argument>)</argument_list></expr>
+<expr><block>{}</block></expr></init>;</concept>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<concept>concept <name>test</name> <init>= <expr><literal type="boolean">true</literal></expr></init></concept>
+</unit>
+
+<!--conjuction examples-->
+<!--test 3-->
+<unit language="C++">
+<template>template <parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template>
+<concept>concept <name>foo</name> <init>= <expr><name><name>foo</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name> <operator>&amp;&amp;</operator> <name><name>bar</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name></expr></init></concept>
+</unit>
+
+<!--test 4-->
+<unit language="C++">
+<template>template <parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template>
+<requires>requires <expr><name><name>foo</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name> <operator>&amp;&amp;</operator> <name><name>bar</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name></expr></requires>
+<function_decl><type><name>void</name></type> <name>f</name><parameter_list>(<parameter><decl><type><name>T</name></type></decl></parameter>)</parameter_list>;</function_decl>
+</unit>
+
+<!--disjunction examples-->
+<!--test 5-->
+<unit language="C++">
+<template>template <parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template>
+<concept>concept <name>foo</name> <init>= <expr><name><name>foo</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name> <operator>||</operator> <name><name>bar</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name></expr></init></concept>
+</unit>
+
+<!--test 6-->
+<unit language="C++">
+<template>template <parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template>
+<requires>requires <expr><name><name>foo</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name> <operator>||</operator> <name><name>bar</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name></expr></requires>
+<function_decl><type><name>void</name></type> <name>f</name><parameter_list>(<parameter><decl><type><name>T</name></type></decl></parameter>)</parameter_list>;</function_decl>
+</unit>
+
+<!--atomic constraints-->
+<!--test 7-->
+<unit language="C++">
+<template>template <parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template>
+<struct>struct <name>S</name>
+<block>{<block_content>
+<function type="operator"><type><specifier>constexpr</specifier></type> <name>operator <name>bool</name></name><parameter_list>()</parameter_list> <specifier>const</specifier> <block>{<block_content> <return>return <expr><literal type="boolean">true</literal></expr>;</return> </block_content>}</block></function>
+</block_content>}</block>;</struct>
+</unit>
+
+<!--test 8-->
+<unit language="C++">
+<template>template <parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template>
+<decl_stmt><decl><type><specifier>constexpr</specifier> <name>bool</name></type> <name>is_meowable</name> <init>= <expr><literal type="boolean">true</literal></expr></init></decl>;</decl_stmt>
+</unit>
+
+<!--misc-->
+<!--constraint normalization-->
+<!--test 9-->
+<unit language="C++">
+<template>template <parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template>
+<concept>concept <name>A</name> <init>= <expr><namespace>T<operator>::</operator><name>value</name></namespace> <operator>||</operator><literal type="boolean">true</literal>;</expr></init></concept>
+</unit>
+
+<!--test 10-->
+<unit language="C++">
+<template>template <parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template>
+<concept>concept <name>A</name> <init>= <expr><name><name>A</name><argument_list type="generic">&lt;<argument><expr><name>U</name><operator>*</operator></expr></argument>&gt;</argument_list></name></expr></init></concept>
+</unit>
+
+<!--requires clauses-->
+<!--test 11-->
+<unit language="C++">
+<function_decl><template>template<parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template> 
+<type><name>void</name></type> <name>f</name><parameter_list>(<parameter><decl><type><name>T</name><modifier>&amp;&amp;</modifier></type></decl></parameter>)</parameter_list><requires>requires <expr><name><name>Eq</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name></expr></requires>;</function_decl>
+</unit>
+
+<!--test 12-->
+<unit language="C++">
+<function><template>template<parameter_list>&lt;<parameter><type><name>typename</name></type> <name>T</name></parameter>&gt;</parameter_list></template> <requires>requires <expr><name><name>Eq</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name></expr></requires>
+<type><name>T</name></type> <name>add</name><parameter_list>(<parameter><decl><type><name>T</name></type> <name>a</name></decl></parameter>, <parameter><decl><type><name>T</name></type> <name>b</name></decl></parameter>)</parameter_list> <block>{<block_content></block_content>}</block></function>
+</unit>
+
+<!--test 13-->
+<unit language="C++">
+<function_decl><template>template<parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template> 
+<type><name>void</name></type> <name>h</name><argument_list type="generic">(<argument><expr><name>T</name></expr></argument>)</argument_list> <requires>requires <expr>(<name>is_purrable</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list><parameter_list>()</parameter_list>)</expr></requires>;</function_decl>
+</unit>
+
+<!--requires expressions-->
+<!--test 14-->
+<unit language="C++">
+<concept><template>template<parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template> 
+concept <name>Addable</name> <init>= <expr><requires>requires <parameter_list>(<type><name>T</name></type> <name>x</name>)</parameter_list> <block>{<block_content></block_content>}</block></requires></expr>;</init></concept>
+</unit>
+
+<!--type requirements-->
+<!--test 15-->
+<unit language="C++">
+<using><template>template<parameter_list>&lt;<parameter><type><name>typename</name></type> <name>T</name></parameter>&gt;</parameter_list></template> using <name>Ref</name> <init>= <type><name>T</name><modifier>&amp;</modifier></type></init>;</using>
+<concept><template>template<parameter_list>&lt;<parameter><type><name>typename</name></type> <name>T</name></parameter>&gt;</parameter_list></template> concept <name>C</name> <init>=
+<requires>requires
+<block>{<block_content>
+    <expr_stmt><expr><name><typename>typename</typename> <name>T</name><operator>::</operator><name>inner</name></name></expr>;</expr_stmt>
+    <expr_stmt><expr><name><typename>typename</typename> <name><name>S</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name></name></expr>;</expr_stmt>
+    <expr_stmt><expr><name><typename>typename</typename> <name><name>Ref</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name></name></expr>;</expr_stmt>
+</block_content>}</block></requires></init>;</concept>
+</unit>
+
+<!--Compound Requirements-->
+<!--test 16-->
+<unit language="C++">
+<concept><template>template<parameter_list>&lt;<parameter><type><name>typename</name></type> <name>T</name></parameter>&gt;</parameter_list></template> concept <name>C2</name> <init>=
+<expr><requires>requires<parameter_list>(<type><name>T</name></type> <name>a</name>)</parameter_list>
+<block>{<block_content></block_content>}</block></requires></expr></init>;</concept>
+</unit>
+
+<!--Next Requirements-->
+<!--test 17-->
+<unit language="C++">
+<concept><template>template<parameter_list>&lt;<parameter><type><name>typename</name></type> <name>T</name></parameter>&gt;</parameter_list></template> 
+concept <name>foo1</name> <init>= <expr><name><name>foo2</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name>
+<operator>&amp;&amp;</operator> <requires>requires<parameter_list>(<type><name>T</name></type> <name>a</name>)</parameter_list>
+<block>{<block_content></block_content>}</block></requires></expr></init>;</concept>
+</unit>
+
+</unit>
