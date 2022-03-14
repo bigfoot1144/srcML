@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="NamespaceUsingDeclaration/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<using>using <name><name>A</name><operator>::</operator><name>g</name></name>, <name><name>A</name><operator>::</operator><name>g</name></name>;</using>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<using>using <name><name>A</name><operator>::</operator><name>g</name></name>, <name><name>A</name><operator>::</operator><name>g</name></name>;</using>
+</unit>
+
+</unit>
