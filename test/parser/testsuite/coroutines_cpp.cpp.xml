@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="coroutines/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<decl_stmt><decl><type><name>int</name></type> <name>bar</name> <init>= <expr><co_await>co_await</co_await> <call><name>foo</name><argument_list>()</argument_list></call></expr></init></decl>;</decl_stmt>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<expr_stmt><co_await>co_await</co_await> <expr><call><name>foo</name><argument_list>(<argument><expr><name>bar</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+</unit>
+
+<!--test 3-->
+<unit language="C++">
+<expr_stmt><expr><co_await><name>co_await</name></co_await></expr> ;</expr_stmt>
+</unit>
+
+<!--test 4-->
+<unit language="C++">
+<decl_stmt><decl><type><name>int</name></type> <name>i</name> <init>= <expr><co_await>co_await</co_await> <call><name>foo</name><argument_list>(<argument><expr><name>bar</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+</unit>
+
+<!--test 5-->
+<unit language="C++">
+<return type="co_yield">co_yield <expr><name>n</name></expr>;</return>
+</unit>
+
+<!--test 6-->
+<unit language="C++">
+<return type="co_yield">co_yield <expr><name>n</name><operator>++</operator></expr>;</return>
+</unit>
+
+<!--test 7-->
+<unit language="C++">
+<return type="co_return">co_return <expr><literal type="number">7</literal></expr>;</return>
+</unit>
+
+</unit>
