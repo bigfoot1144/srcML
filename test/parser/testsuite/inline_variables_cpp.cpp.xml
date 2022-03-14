@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="inlineVariables/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<decl_stmt><decl><type><specifier>inline</specifier> <name>int</name></type> <name>foo</name> <init>= <expr><literal type="number">0</literal></expr></init></decl>;</decl_stmt>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<decl_stmt><decl><type><specifier>inline</specifier> <name>double</name></type> <name>bar</name> <init>= <expr><literal type="number">1</literal></expr></init></decl>;</decl_stmt>
+</unit>
+
+</unit>
