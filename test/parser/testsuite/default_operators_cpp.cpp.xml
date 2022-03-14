@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="default_operators/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<function_decl type="operator"><type><name>bool</name></type> <name>operator<name>==</name></name><parameter_list>(<parameter><decl><type><specifier>const</specifier> <name>Point</name><modifier>&amp;</modifier></type></decl></parameter>)</parameter_list> <specifier>const</specifier> = <specifier>default</specifier>;</function_decl>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<function_decl type="operator"><type><name>auto</name></type> <name>operator<name>&lt;=&gt;</name></name><parameter_list>(<parameter><decl><type><specifier>const</specifier> <name>Point</name><modifier>&amp;</modifier></type></decl></parameter>)</parameter_list> <specifier>const</specifier> = <specifier>default</specifier>;</function_decl>
+</unit>
+
+</unit>
