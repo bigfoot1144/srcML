@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="foldExpressions/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<function><template>template<parameter_list>&lt;<parameter><type><name>typename</name> <modifier>...</modifier></type><name>Args</name></parameter>&gt;</parameter_list></template>
+<type><name>void</name></type> <name>printer</name><parameter_list>(<parameter><decl><type><name>Args</name><modifier>&amp;&amp;</modifier><modifier>...</modifier></type> <name>args</name></decl></parameter>)</parameter_list> <block>{<block_content>
+    <expr_stmt><expr><operator>(</operator><name><name>std</name><operator>::</operator><name>cout</name></name> <operator>&lt;&lt;</operator> <operator>...</operator> <operator>&lt;&lt;</operator> <name>args</name><operator>)</operator> <operator>&lt;&lt;</operator> <literal type="char">'\n'</literal></expr>;</expr_stmt>
+</block_content>}</block></function>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<function><template>template<parameter_list>&lt;<parameter><type><name>typename</name></type> <name>T</name></parameter>, <parameter><type><name>typename</name><modifier>...</modifier></type> <name>Args</name></parameter>&gt;</parameter_list></template>
+<type><name>void</name></type> <name>push_back_vec</name><parameter_list>(<parameter><decl><type><name><name>std</name><operator>::</operator><name>vector</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name><modifier>&amp;</modifier></type> <name>v</name></decl></parameter>, <parameter><decl><type><name>Args</name><modifier>&amp;&amp;</modifier><modifier>...</modifier></type> <name>args</name></decl></parameter>)</parameter_list>
+<block>{<block_content>
+    <assert type="static">static_assert<argument_list>(<argument><expr><operator>(</operator><name><name>std</name><operator>::</operator><name>is_constructible_v</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>, <argument><expr><name>Args</name><operator>&amp;&amp;</operator></expr></argument>&gt;</argument_list></name> <operator>&amp;&amp;</operator> <operator>...</operator><operator>)</operator></expr></argument>)</argument_list>;</assert>
+    <expr_stmt><expr><operator>(</operator><call><name><name>v</name><operator>.</operator><name>push_back</name></name><argument_list>(<argument><expr><call><name><name>std</name><operator>::</operator><name>forward</name><argument_list type="generic">&lt;<argument><expr><name>Args</name></expr></argument>&gt;</argument_list></name><argument_list>(<argument><expr><name>args</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call><operator>,</operator> <operator>...</operator><operator>)</operator></expr>;</expr_stmt>
+</block_content>}</block></function>
+</unit>
+
+<!--test 3-->
+<unit language="C++">
+<function><template>template<parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>, <parameter><type><name><name>std</name><operator>::</operator><name>size_t</name></name><modifier>...</modifier></type> <name>N</name></parameter>&gt;</parameter_list></template>
+<type><specifier>constexpr</specifier> <name>T</name></type> <name>bswap_impl</name><parameter_list>(<parameter><decl><type><name>T</name></type> <name>i</name></decl></parameter>, <parameter><decl><type><name><name>std</name><operator>::</operator><name>index_sequence</name><argument_list type="generic">&lt;<argument><expr><name>N</name><modifier>...</modifier></expr></argument>&gt;</argument_list></name></type></decl></parameter>)</parameter_list> 
+<block>{<block_content>
+  <return>return <expr><operator>(</operator><operator>(</operator><operator>(</operator><name>i</name> <operator>&gt;&gt;</operator> <name>N</name><operator>*</operator><name>CHAR_BIT</name> <operator>&amp;</operator> <call><name><name>std</name><operator>::</operator><name>uint8_t</name></name><argument_list>(<argument><expr><operator>-</operator><literal type="number">1</literal></expr></argument>)</argument_list></call><operator>)</operator> <operator>&lt;&lt;</operator> <operator>(</operator><sizeof>sizeof<argument_list>(<argument><expr><name>T</name></expr></argument>)</argument_list></sizeof><operator>-</operator><literal type="number">1</literal><operator>-</operator><name>N</name><operator>)</operator><operator>*</operator><name>CHAR_BIT</name><operator>)</operator> <operator>|</operator> <operator>...</operator><operator>)</operator></expr>;</return>
+</block_content>}</block></function>
+</unit>
+
+<!--test 4-->
+<unit language="C++">
+<function><template>template<parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>, <parameter><type><name>class</name></type> <name>U</name> <init>= <expr><name><name>std</name><operator>::</operator><name>make_unsigned_t</name><argument_list type="generic">&lt;<argument><expr><name>T</name></expr></argument>&gt;</argument_list></name></expr></init></parameter>&gt;</parameter_list></template>
+<type><specifier>constexpr</specifier> <name>U</name></type> <name>bswap</name><parameter_list>(<parameter><decl><type><name>T</name></type> <name>i</name></decl></parameter>)</parameter_list> <block>{<block_content>
+  <return>return <expr><call><name><name>bswap_impl</name><argument_list type="generic">&lt;<argument><expr><name>U</name></expr></argument>&gt;</argument_list></name><argument_list>(<argument><expr><name>i</name></expr></argument>, <argument><expr><name><name>std</name><operator>::</operator><name>make_index_sequence</name></name><operator>&lt;</operator><sizeof>sizeof<argument_list>(<argument><expr><name>T</name></expr></argument>)</argument_list></sizeof><operator>&gt;</operator><block>{}</block></expr></argument>)</argument_list></call></expr>;</return>
+</block_content>}</block></function>
+</unit>
+
+</unit>
