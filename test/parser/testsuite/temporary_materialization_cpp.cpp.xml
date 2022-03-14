@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="temporaryMaterialization/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<struct>struct <name>S</name> <block>{<public type="default"> <decl_stmt><decl><type><name>int</name></type> <name>m</name></decl>;</decl_stmt> </public>}</block>;</struct>
+<decl_stmt><decl><type><name>int</name></type> <name>i</name> <init>= <expr><call><name>S</name><argument_list>()</argument_list></call><operator>.</operator><name>m</name></expr></init></decl>;</decl_stmt>
+</unit>
+
+</unit>
