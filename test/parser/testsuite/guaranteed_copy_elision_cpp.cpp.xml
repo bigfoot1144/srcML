@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" xmlns:cpp="http://www.srcML.org/srcML/cpp" revision="1.0.0" language="C++" filename="guaranteedCopyElision/example1.cpp">
+
+<!--test 1-->
+<unit language="C++"> 
+<struct>struct <name>Noisy</name> <block>{<public type="default">
+    <constructor><name>Noisy</name><parameter_list>()</parameter_list> <block>{<block_content> <expr_stmt><expr><name><name>std</name><operator>::</operator><name>cout</name></name> <operator>&lt;&lt;</operator> <literal type="string">"constructed at "</literal> <operator>&lt;&lt;</operator> <name>this</name> <operator>&lt;&lt;</operator> <literal type="char">'\n'</literal></expr>;</expr_stmt> </block_content>}</block></constructor>
+    <constructor><name>Noisy</name><parameter_list>(<parameter><decl><type><specifier>const</specifier> <name>Noisy</name><modifier>&amp;</modifier></type></decl></parameter>)</parameter_list> <block>{<block_content> <expr_stmt><expr><name><name>std</name><operator>::</operator><name>cout</name></name> <operator>&lt;&lt;</operator> <literal type="string">"copy-constructed\n"</literal></expr>;</expr_stmt> </block_content>}</block></constructor>
+    <constructor><name>Noisy</name><parameter_list>(<parameter><decl><type><name>Noisy</name><modifier>&amp;&amp;</modifier></type></decl></parameter>)</parameter_list> <block>{<block_content> <expr_stmt><expr><name><name>std</name><operator>::</operator><name>cout</name></name> <operator>&lt;&lt;</operator> <literal type="string">"move-constructed\n"</literal></expr>;</expr_stmt> </block_content>}</block></constructor>
+    <destructor><name>~Noisy</name><parameter_list>()</parameter_list> <block>{<block_content> <expr_stmt><expr><name><name>std</name><operator>::</operator><name>cout</name></name> <operator>&lt;&lt;</operator> <literal type="string">"destructed at "</literal> <operator>&lt;&lt;</operator> <name>this</name> <operator>&lt;&lt;</operator> <literal type="char">'\n'</literal></expr>;</expr_stmt> </block_content>}</block></destructor>
+</public>}</block>;</struct>
+</unit>
+
+<!--test 2-->
+<unit language="C++"> 
+<function><type><name><name>std</name><operator>::</operator><name>vector</name><argument_list type="generic">&lt;<argument><expr><name>Noisy</name></expr></argument>&gt;</argument_list></name></type> <name>f</name><parameter_list>()</parameter_list> <block>{<block_content>
+    <decl_stmt><decl><type><name><name>std</name><operator>::</operator><name>vector</name><argument_list type="generic">&lt;<argument><expr><name>Noisy</name></expr></argument>&gt;</argument_list></name></type> <name>v</name> <init>= <expr><call><name><name>std</name><operator>::</operator><name>vector</name><argument_list type="generic">&lt;<argument><expr><name>Noisy</name></expr></argument>&gt;</argument_list></name><argument_list>(<argument><expr><literal type="number">3</literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+    <return>return <expr><name>v</name></expr>;</return> 
+</block_content>}</block></function>
+</unit>
+
+<!--test 3-->
+<unit language="C++">
+<function><type><name>void</name></type> <name>g</name><parameter_list>(<parameter><decl><type><name><name>std</name><operator>::</operator><name>vector</name><argument_list type="generic">&lt;<argument><expr><name>Noisy</name></expr></argument>&gt;</argument_list></name></type> <name>arg</name></decl></parameter>)</parameter_list> <block>{<block_content>
+    <expr_stmt><expr><name><name>std</name><operator>::</operator><name>cout</name></name> <operator>&lt;&lt;</operator> <literal type="string">"arg.size() = "</literal> <operator>&lt;&lt;</operator> <call><name><name>arg</name><operator>.</operator><name>size</name></name><argument_list>()</argument_list></call> <operator>&lt;&lt;</operator> <literal type="char">'\n'</literal></expr>;</expr_stmt>
+</block_content>}</block></function>
+</unit>
+
+<!--test 4-->
+<unit language="C++">
+<function><type><name>int</name></type> <name>main</name><parameter_list>()</parameter_list> <block>{<block_content>
+    <decl_stmt><decl><type><name><name>std</name><operator>::</operator><name>vector</name><argument_list type="generic">&lt;<argument><expr><name>Noisy</name></expr></argument>&gt;</argument_list></name></type> <name>v</name> <init>= <expr><call><name>f</name><argument_list>()</argument_list></call></expr></init></decl>;</decl_stmt>
+    <expr_stmt><expr><call><name>g</name><argument_list>(<argument><expr><call><name>f</name><argument_list>()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+</block_content>}</block></function>
+</unit>
+
+</unit>
