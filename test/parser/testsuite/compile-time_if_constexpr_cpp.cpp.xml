@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" xmlns:cpp="http://www.srcML.org/srcML/cpp" revision="1.0.0" language="C++" filename="ifConstExpr/example3.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<function><type><name>void</name></type> <name>f</name><parameter_list>()</parameter_list> <block>{<block_content>
+    <if_stmt><if>if <specifier>constexpr</specifier><condition>(<expr><literal type="boolean">false</literal></expr>)</condition> 
+    <block>{<block_content>
+        <decl_stmt><decl><type><name>int</name></type> <name>i</name> <init>= <expr><literal type="number">0</literal></expr></init></decl>;</decl_stmt>
+    </block_content>}</block></if></if_stmt>
+</block_content>}</block></function>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<cpp:define>#<cpp:directive>define</cpp:directive> <cpp:macro><name>EXPR</name></cpp:macro> <cpp:value>true</cpp:value></cpp:define>
+<if_stmt><if>if <specifier>constexpr</specifier><condition>(<expr><name>EXPR</name></expr>)</condition> <block>{<block_content/>}</block></if></if_stmt>
+</unit>
+
+<!--test 3-->
+<unit language="C++">
+<function><template>template<parameter_list>&lt;<parameter><type><name>class</name></type> <name>T</name></parameter>&gt;</parameter_list></template> <type><name>void</name></type> <name>g</name><parameter_list>()</parameter_list> 
+<block>{<block_content>
+    <decl_stmt><decl><type><name>auto</name></type> <name>lm</name> <init>= <expr><lambda><capture>[]</capture><parameter_list>(<parameter><decl><type><name>auto</name></type> <name>p</name></decl></parameter>)</parameter_list> <block>{<block_content>
+        <if_stmt><if>if <specifier>constexpr</specifier> <condition>(<expr><sizeof>sizeof<argument_list>(<argument><expr><name>T</name></expr></argument>)</argument_list></sizeof> <operator>==</operator> <literal type="number">1</literal> <operator>&amp;&amp;</operator> <sizeof>sizeof <name>p</name></sizeof> <operator>==</operator> <literal type="number">1</literal></expr>)</condition> <block>{<block_content>
+           <comment type="line">// this condition remains value-dependent after instantiation of g&lt;T&gt;</comment>
+        </block_content>}</block></if></if_stmt>
+    </block_content>}</block></lambda></expr></init></decl>;</decl_stmt>
+</block_content>}</block></function>
+</unit>
+
+</unit>
