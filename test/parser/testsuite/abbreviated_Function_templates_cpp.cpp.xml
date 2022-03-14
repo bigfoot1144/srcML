@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="example.cpp">
+
+<!--same as template&lt;class T&gt; void f1(T);-->
+<!--test 1-->
+<unit language="C++">
+<function_decl><type><name>void</name></type> <name>f1</name><parameter_list>(<parameter><decl><type><name>auto</name></type></decl></parameter>)</parameter_list>;</function_decl>
+</unit>
+
+<!--same as template&lt;C1 T&gt; void f2(T), if C1 is a concept;-->
+<!--test 2-->
+<unit language="C++">
+<function_decl><type><name>void</name></type> <name>f2</name><parameter_list>(<parameter><decl><type><name>C1</name></type> <parameter><decl><type><name>auto</name></type></decl></parameter></decl></parameter>)</parameter_list>;</function_decl>
+</unit>
+
+<!--same as template&lt;C2... Ts&gt; void f3(Ts...), if C2 is a concept-->
+<!--test 3-->
+<unit language="C++">
+<comment type="line">// same as template&lt;C2... Ts&gt; void f3(Ts...), if C2 is a concept</comment>
+<function_decl><type><name>void</name></type> <name>f3</name><parameter_list>(<parameter><decl><type><name>C2</name> <specifier>auto</specifier><modifier>...</modifier></type></decl></parameter>)</parameter_list>;</function_decl>
+</unit>
+
+</unit>
