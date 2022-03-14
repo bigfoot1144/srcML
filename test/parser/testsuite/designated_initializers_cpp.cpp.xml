@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="designated_initializers/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<decl_stmt><decl><type><name>A</name></type> <name>b</name><argument_list>{<argument><expr><operator>.</operator><name>x</name> <operator>=</operator> <literal type="number">1</literal></expr></argument>, <argument><expr><operator>.</operator><name>y</name> <operator>=</operator> <literal type="number">2</literal></expr></argument>}</argument_list></decl>;</decl_stmt> 
+</unit>
+
+</unit>
