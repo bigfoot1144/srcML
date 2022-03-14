@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="consteval_constinit/example.cpp">
+
+<!--consteval-->
+<!--test 1-->
+<unit language="C++">
+<function><type><name>consteval</name> <name>int</name></type> <name>f</name><parameter_list>()</parameter_list> <block>{<block_content> <return>return <expr><literal type="number">42</literal></expr>;</return> </block_content>}</block></function>
+</unit>
+
+<unit language="C++">
+<function><type><name>consteval</name> <specifier>auto</specifier></type> <name>g</name><parameter_list>()</parameter_list> <block>{<block_content> <return>return <expr><operator>&amp;</operator><name>f</name></expr>;</return> </block_content>}</block></function>
+</unit>
+
+<unit language="C++">
+<function><type><name>consteval</name> <name>int</name></type> <name>h</name><parameter_list>(<parameter><function_decl><type><name>int</name></type> (<modifier>*</modifier><name>p</name>)<parameter_list>()</parameter_list> <init>= <expr><call><name>g</name><argument_list>()</argument_list></call></expr></init></function_decl></parameter>)</parameter_list> <block>{<block_content> <return>return <expr><call><name>p</name><argument_list>()</argument_list></call></expr>;</return> </block_content>}</block></function>
+</unit>
+
+<!--constexpr-->
+<!--test 2-->
+<unit language="C++">
+<decl_stmt><decl><type><specifier>constexpr</specifier> <name>int</name></type> <name>r</name> <init>= <expr><literal type="number">1</literal></expr></init></decl>;</decl_stmt> 
+</unit>
+
+<unit language="C++">
+<decl_stmt><decl><type><specifier>constexpr</specifier> <name>int</name></type> <name>r</name> <init>= <expr><call><name>h</name><argument_list>()</argument_list></call></expr></init></decl>;</decl_stmt> 
+</unit>
+
+<unit language="C++">
+<decl_stmt><decl><type><specifier>constexpr</specifier> <name>int</name></type> <name>r</name> <init>= <expr><call><name>sqr</name><argument_list>(<argument><expr><literal type="number">100</literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+</unit>
+
+</unit>
