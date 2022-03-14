@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="char8_t/example.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<decl_stmt><decl><type><name>char8_t</name></type> <name>foo</name> <init>= <expr><literal type="number">0</literal></expr></init></decl>;</decl_stmt>
+</unit>
+
+</unit>
