@@ -33,4 +33,9 @@
 <for>for<control>(<init><decl><type><name>int</name></type> <name>a</name> <init>= <expr><ternary><condition><expr><name>b</name></expr> ?</condition><then> <expr><name>c</name></expr> </then><else>: <expr><name>d</name></expr></else></ternary></expr></init></decl>;</init> <condition><expr><literal type="number">1</literal></expr>;</condition> <incr/>)</control><block type="pseudo"><block_content> <expr_stmt><expr><name>c</name></expr>;</expr_stmt></block_content></block></for>
 </unit>
 
+<unit xmlns:cpp="http://www.srcML.org/srcML/cpp" language="C++">
+<for>for <control>(<init><decl><type><name>T</name></type> <name>thing</name> <init>= <expr><call><name>foo</name><argument_list>()</argument_list></call></expr></init></decl>;</init> <condition><expr><name>auto</name><operator>&amp;</operator> <name>x</name> <operator>:</operator> <call><name><name>thing</name><operator>.</operator><name>items</name></name><argument_list>()</argument_list></call></expr></condition>)</control> 
+<block>{<block_content/>}</block></for>
+</unit>
+
 </unit>
