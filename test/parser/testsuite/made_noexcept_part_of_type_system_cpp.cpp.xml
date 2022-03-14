@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="noexceptTypeSystem/example3.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<function_decl><type><name>void</name></type> <name>g</name><parameter_list>()</parameter_list> <noexcept>noexcept<argument_list>(<argument><expr><literal type="boolean">true</literal></expr></argument>)</argument_list></noexcept>;</function_decl>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<struct>struct <name>A</name> <block>{<public type="default">
+  <constructor_decl><name>A</name><parameter_list>(<parameter><decl><type><name>int</name></type> <init>= <expr><operator>(</operator><call><name>A</name><argument_list>(<argument><expr><literal type="number">5</literal></expr></argument>)</argument_list></call><operator>,</operator> <literal type="number">0</literal><operator>)</operator></expr></init></decl></parameter>)</parameter_list> <noexcept>noexcept<argument_list>(<argument><expr><literal type="boolean">false</literal></expr></argument>)</argument_list></noexcept>;</constructor_decl>
+  <constructor_decl><name>A</name><parameter_list>(<parameter><decl><type><specifier>const</specifier> <name>A</name><modifier>&amp;</modifier></type></decl></parameter>)</parameter_list> <noexcept>noexcept</noexcept>;</constructor_decl>
+  <constructor_decl><name>A</name><parameter_list>(<parameter><decl><type><name>A</name><modifier>&amp;&amp;</modifier></type></decl></parameter>)</parameter_list> <noexcept>noexcept</noexcept>;</constructor_decl>
+  <destructor_decl><name>~A</name><parameter_list>()</parameter_list>;</destructor_decl>
+</public>}</block>;</struct>
+</unit>
+
+<!--test 3-->
+<unit language="C++">
+<struct>struct <name>B</name> <block>{<public type="default">
+  <macro><name>B</name><argument_list>(<argument>B&amp;&amp;</argument>, <argument>int = (throw Y(), <literal type="number">0</literal>)</argument>)</argument_list></macro> <expr_stmt><expr><noexcept>noexcept</noexcept></expr>;</expr_stmt>
+  <destructor_decl><name>~B</name><parameter_list>()</parameter_list> <noexcept>noexcept<argument_list>(<argument><expr><literal type="boolean">false</literal></expr></argument>)</argument_list></noexcept>;</destructor_decl>
+</public>}</block>;</struct>
+</unit>
+
+</unit>
