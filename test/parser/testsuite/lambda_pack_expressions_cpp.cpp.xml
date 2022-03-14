@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="pack-expansions_in_lambda_init-captures/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<decl_stmt><decl><type><name>auto</name></type> <name>f</name> <init>= <expr><index>[]</index><operator>&lt;</operator><name><typename>typename</typename></name> <operator>...</operator><name>Ts</name><operator>&gt;</operator><parameter_list>(<parameter><name>Ts</name><operator>&amp;&amp;</operator> <operator>...</operator><name>ts</name></parameter>)</parameter_list>
+<block>{<block_content/>}</block></expr></init></decl></decl_stmt>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<decl_stmt><decl><type><name>auto</name></type> <name>f</name> <init>= <expr><index>[]</index><operator>&lt;</operator><name><typename>typename</typename></name> <operator>...</operator><name>Ts</name><operator>&gt;</operator> <requires>requires <name>Decrementable</name></requires><argument_list>(<argument><expr><name>Ts</name><operator>&amp;&amp;</operator> <operator>...</operator><name>ts</name></expr></argument>)</argument_list> <name>mutable</name> <attribute>[[<expr><name>noreturn</name></expr>]]</attribute> <requires>requires <name>Decrementable</name></requires>
+<block>{<block_content/>}</block></expr></init></decl>;</decl_stmt>
+</unit>
+
+</unit>
