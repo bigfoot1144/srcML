@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="constExprLambda/example1.cpp">
+
+<!--test 1-->
+<unit language="C++">
+<using>using <name>F</name> <init>= <type><function_decl><type><name>ret</name></type>(<modifier>*</modifier>)<parameter_list>(<parameter><decl><type><name>params</name></type></decl></parameter>)</parameter_list>;</function_decl></type></init></using>
+<function_decl type="operator"><name>operator <name>F</name></name><parameter_list>()</parameter_list> <specifier>const</specifier> <noexcept>noexcept</noexcept>;</function_decl>
+</unit>
+
+<!--test 2-->
+<unit language="C++">
+<using>using <name>F</name> <init>= <type><function_decl><type><name>ret</name></type>(<modifier>*</modifier>)<parameter_list>(<parameter><decl><type><name>params</name></type></decl></parameter>)</parameter_list>;</function_decl></type></init></using>
+<function_decl type="operator"><type><specifier>constexpr</specifier></type> <name>operator <name>F</name></name><parameter_list>()</parameter_list> <specifier>const</specifier> <noexcept>noexcept</noexcept>;</function_decl>
+</unit>
+
+<!--test 3-->
+<unit language="C++">
+<template>template<parameter_list>&lt;<parameter><type><template>template<parameter_list>-<parameter><type><name>params</name></type></parameter>&gt;</parameter_list>
+<function_decl type="operator"><type><specifier>constexpr</specifier></type> <name>operator <name><name>fptr_t</name><argument_list type="generic">&lt;<argument><expr><specifier>template</specifier><operator>-</operator><name>params</name></expr></argument>&gt;</argument_list></name></name><parameter_list>()</parameter_list> <specifier>const</specifier> <noexcept>noexcept</noexcept>;</function_decl></template></type></parameter></parameter_list></template>
+</unit>
+
+</unit>
